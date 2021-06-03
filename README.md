@@ -1,7 +1,17 @@
 # My-Restaurant-List
 
-## Prerequisites：你使用的軟體與套件版本等。
-## Installation and Execution：如何啟動你的專案，除了 express install，通常會對應到你在 package.json 設定的腳本，例如 npm run dev。
+## Prerequisites:
+
+[Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/)
+
+[Express](https://www.npmjs.com/package/express)
+
+[Express-Handlebars](https://www.npmjs.com/package/express-handlebars)
+
+[Node.js](https://nodejs.org/en/)
+
+
+## Installation and Execution:
 
 Clone the reposity: 
 
@@ -14,7 +24,15 @@ Navigate inside the directory:
 Install all the necessary dependecies:
 
     npm install
-    
- Run the server
+    $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+    $ nvm install 10.15.0
 
-## Features：你所完成的功能。如果功能太多，可以只說明重點功能。
+Run the server
+
+    $ node index.js
+    
+Open the web browser and type http://localhost:3000 in the address bar to load the application.
+
+## Features：
+
+Viewing the details of a restaurant can be done clicking the photo of the restaurant or clicking the name of the restaurant.
