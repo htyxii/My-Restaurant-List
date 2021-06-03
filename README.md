@@ -35,4 +35,8 @@ Open the web browser and type http://localhost:3000 in the address bar to load t
 
 ## Features：
 
-Viewing the details of a restaurant can be done clicking the photo of the restaurant or clicking the name of the restaurant.
+- Display a list of restaurants
+
+- Allows users to search for restaurants
+
+- Viewing the details of a restaurant can be done clicking the photo or name of the restaurant
