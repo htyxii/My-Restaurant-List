@@ -4,6 +4,11 @@ const app = express()
 const port = 3000
 const Restaurant = require('./models/restaurant')
 
+// 引用 body-parser
+const bodyParser = require('body-parser')
+// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
+app.use(bodyParser.urlencoded({ extended: true }))
+
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
@@ -36,11 +41,9 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error)) // 錯誤處理
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant: restaurant })
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
 })
-
 
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
@@ -52,6 +55,30 @@ app.get('/search', (req, res) => {
 
 app.get('/restaurants/new', (req, res) => {
   return res.render('new')
+})
+
+app.post('/restaurants', (req, res) => {
+  return Restaurant.create({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description,
+  })
+    .then(() => res.redirect('./'))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 // start and listen on the Express server
