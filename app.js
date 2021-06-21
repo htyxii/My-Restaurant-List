@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const Restaurant = require('./models/restaurant')
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
